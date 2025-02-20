@@ -1,9 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
-from .serializers import TodoSerializer
+from .serializers import TodoSerializer, TodoDetailSerializer
 from .models import Todo
 
 class TodoView(APIView):
@@ -35,3 +36,8 @@ class TodoView(APIView):
         todo.save()
         return Response(status=status.HTTP_201_CREATED)
 
+
+class TodoDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoDetailSerializer
+    permission_classes = [IsAuthenticated]

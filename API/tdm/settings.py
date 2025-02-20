@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local
     'accounts.apps.AccountsConfig',
+    'todo.apps.TodoConfig',
     # package
     'rest_framework',
     'rest_framework_simplejwt',
